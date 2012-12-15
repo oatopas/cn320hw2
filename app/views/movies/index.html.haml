@@ -1,5 +1,16 @@
 -#  This file is app/views/movies/index.html.haml
+
+
 %h1 All Movies
+
+
+
+= form_tag movies_path, :method => :get do
+  Include: 
+  - @all_ratings.each do |rating, value|
+    = rating
+    = check_box_tag "ratings[#{rating}]", 1, session[:ratings]?value:true
+  = submit_tag 'Refresh', :id => "ratings_submit"
 
 %table#movies
   %thead
@@ -22,5 +33,6 @@
 <br> Suwanchai Sornsuwan
 <br> Opas Ratanothayanon
 <br>
-
--# = @movies.inspect
+-#= session.inspect
+<br>
+-#= @all_ratings.inspect
