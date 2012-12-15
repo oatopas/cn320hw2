@@ -4,12 +4,13 @@
 %table#movies
   %thead
     %tr
-      = %th  link_to 'Movie Title', movie_path
-      %th link_to 'Rating', movie_path
-      %th Release Date
+      %th= link_to  'Movie Title', movies_path(:sort => 'title')
+      %th Rating
+      %th= link_to "Release Date",movies_path(:sort => 'releasedate')
       %th More Info
   %tbody
     - @movies.each do |movie|
+
       %tr
         %td= movie.title 
         %td= movie.rating
@@ -20,3 +21,6 @@
 
 <br> Suwanchai Sornsuwan
 <br> Opas Ratanothayanon
+<br>
+
+= @movies.inspect
